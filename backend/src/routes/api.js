@@ -1,0 +1,12 @@
+import { Router } from 'express';
+import * as c from '../controllers/contacts.js';
+const router = Router();
+const asyncRoute = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
+router.get('/health', asyncRoute(c.health));
+router.get('/contacts', asyncRoute(c.list));
+router.get('/contacts/:id', asyncRoute(c.get));
+router.post('/contacts', asyncRoute(c.create));
+router.put('/contacts/:id', asyncRoute(c.update));
+router.delete('/contacts/:id', asyncRoute(c.remove));
+router.get('/stats', asyncRoute(c.stats));
+export default router;
