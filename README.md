@@ -118,7 +118,7 @@ Database-backed endpoint coverage is included as an opt-in integration test. Cre
 - **CORS error:** `FRONTEND_ORIGIN` must exactly match the frontend origin, including scheme and port. Restart the backend after changing it.
 - **Frontend cannot reach the API:** Set `VITE_API_BASE_URL` to an API URL reachable from the user's browser, then restart Vite. The API must also allow that browser origin.
 
-## Security limitation
+## Security limitation onnnnnnnnnnnnnnnnnnnnnnnnnnnn
 
 This portfolio demo has no sign-in, authorization, or user separation. Anyone who can reach the API can manage its contacts. Do not expose it with real personal data or treat the basic security middleware as production-grade access control.
 #thalapathy vijay
