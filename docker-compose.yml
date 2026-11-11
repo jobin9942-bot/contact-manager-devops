@@ -1,0 +1,31 @@
+services:
+
+  backend:
+    build:
+      context: ./backend
+    container_name: contact-manager-backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    expose:
+      - "3001"
+    networks:
+      - contact-network
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: /api
+    container_name: contact-manager-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - contact-network
+
+networks:
+  contact-network:
+    driver: bridge

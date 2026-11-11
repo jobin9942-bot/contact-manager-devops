@@ -6,6 +6,7 @@ import api from './routes/api.js';
 import { errorHandler, notFound } from './middleware/errors.js';
 
 const app = express();
+app.set('trust proxy', 1);
 const origins = (process.env.FRONTEND_ORIGIN || 'http://localhost:5173').split(',').map(x => x.trim());
 app.use(helmet());
 app.use(cors({ origin(origin, callback) { if (!origin || origins.includes(origin)) callback(null, true); else callback(new Error('Origin not allowed')); } }));
